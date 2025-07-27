@@ -44,7 +44,7 @@ jobs:
         run: npm audit --audit-level=moderate --json > audit-report.json || true
 
       - name: 📊 Upload audit report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: npm-audit-report
           path: ./audit-report.json
@@ -59,7 +59,7 @@ jobs:
         continue-on-error: true
 
       - name: 📊 Upload Snyk report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: snyk-security-report
           path: ./snyk-report.json
@@ -90,7 +90,7 @@ jobs:
         run: npm outdated --json > outdated-report.json || echo "{}" > outdated-report.json
 
       - name: 📊 Upload outdated report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: outdated-dependencies
           path: ./outdated-report.json
@@ -150,7 +150,7 @@ jobs:
         continue-on-error: true
 
       - name: 📊 Upload ESLint security report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: eslint-security-report
           path: ./eslint-security-report.json
@@ -166,7 +166,7 @@ jobs:
         continue-on-error: true
 
       - name: 📊 Upload Bandit report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bandit-security-report
           path: ./bandit-report.json
