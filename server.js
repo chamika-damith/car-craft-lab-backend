@@ -25,7 +25,7 @@ connectDB();
 app.use(helmet());
 
 // CORS configuration
-const cors = require('cors');
+
 
 app.use(cors({
   origin: '*',
