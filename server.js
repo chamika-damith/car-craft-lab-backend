@@ -4,13 +4,13 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 
-import connectDB from './config/database.js';
-import { errorHandler } from './middleware/errorHandler.js';
+import connectDB from './src/config/database.js';
+import { errorHandler } from './src/middleware/errorHandler.js';
 
 // Import routes
-import authRoutes from './routes/auth.js';
-import servicesRoutes from './routes/services.js';
-import buildsRoutes from './routes/builds.js';
+import authRoutes from './src/routes/auth.js';
+import servicesRoutes from './src/routes/services.js';
+import buildsRoutes from './src/routes/builds.js';
 
 // Load environment variables
 dotenv.config();
@@ -76,6 +76,4 @@ app.listen(PORT, () => {
   console.log(`🔗 Health check: http://localhost:${PORT}/health`);
 });
 
-
-
-export default app; 
+export default app;
