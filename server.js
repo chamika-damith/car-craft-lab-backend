@@ -25,8 +25,14 @@ connectDB();
 app.use(helmet());
 
 // CORS configuration
+const cors = require('cors');
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  origin: [
+    'https://car-craft-lab-main.vercel.app',
+    'https://car-craft-lab-main.vercel.app/',
+    'http://localhost:3000' // for local development
+  ],
   credentials: true
 }));
 
