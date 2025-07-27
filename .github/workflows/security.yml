@@ -97,7 +97,7 @@ jobs:
           retention-days: 7
 
       - name: 🔄 Create Dependabot PR
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'chore: update dependencies'
