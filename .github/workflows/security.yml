@@ -7,13 +7,13 @@ on:
   push:
     branches: [ main, develop ]
     paths:
-      - 'backend/package.json'
-      - 'backend/package-lock.json'
+      - '/package.json'
+      - '/package-lock.json'
   pull_request:
     branches: [ main ]
     paths:
-      - 'backend/package.json'
-      - 'backend/package-lock.json'
+      - '/package.json'
+      - '/package-lock.json'
 
 env:
   NODE_VERSION: '18'
@@ -26,7 +26,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: ./
 
     steps:
       - name: 📥 Checkout code
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: npm-audit-report
-          path: ./backend/audit-report.json
+          path: ./audit-report.json
           retention-days: 30
 
       - name: 🔍 Run Snyk security scan
@@ -62,7 +62,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: snyk-security-report
-          path: ./backend/snyk-report.json
+          path: ./snyk-report.json
           retention-days: 30
 
   # Dependency Updates
@@ -72,7 +72,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: ./
 
     steps:
       - name: 📥 Checkout code
@@ -93,7 +93,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: outdated-dependencies
-          path: ./backend/outdated-report.json
+          path: ./outdated-report.json
           retention-days: 7
 
       - name: 🔄 Create Dependabot PR
@@ -129,7 +129,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: ./
 
     steps:
       - name: 📥 Checkout code
@@ -153,13 +153,13 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: eslint-security-report
-          path: ./backend/eslint-security-report.json
+          path: ./eslint-security-report.json
           retention-days: 30
 
       - name: 🔍 Run Bandit security scan
         uses: python-security/bandit@main
         with:
-          path: ./backend
+          path: ./
           level: low
           format: json
           output-file: bandit-report.json
@@ -169,7 +169,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: bandit-security-report
-          path: ./backend/bandit-report.json
+          path: ./bandit-report.json
           retention-days: 30
 
   # Security Notifications
