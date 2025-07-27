@@ -28,12 +28,9 @@ app.use(helmet());
 const cors = require('cors');
 
 app.use(cors({
-  origin: [
-    'https://car-craft-lab-main.vercel.app',
-    'https://car-craft-lab-main.vercel.app/',
-    'http://localhost:3000' // for local development
-  ],
-  credentials: true
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
 // Body parser middleware
